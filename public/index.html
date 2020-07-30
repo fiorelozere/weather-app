@@ -13,21 +13,61 @@
     <script defer src="script.js"></script>
     <title>Weather App</title>
   </head>
-  <body class="d-flex flex-column justify-content-center align-items-center">
-    <div class="weather-container text-center p-5 m-5">
+  <body class="d-flex flex-column">
+    <div class="weather-container m-auto mt-3 text-center p-5">
       <img id="weather-icon" src="icons/unknown.png" alt="" />
       <h1 id="name"><span id="name-data">City</span></h1>
       <h2 id="main"><span id="main-data"></span></h2>
       <p id="temp"><span id="temp-data"></span> °C</p>
-      <p id="feels-like">Feels Like:<span id="feels-like-data"></span>°C</p>
-      <p id="temp-min">Temp min:<span id="temp-min-data"></span>°C</p>
-      <p id="temp-max">Temp max:<span id="temp-max-data"></span>°C</p>
-      <p id="sunrise"><span id="sunrise-data"></span></p>
-      <p id="sunset"><span id="sunset-data"></span></p>
-      <p id="humidity"><span id="humidity-data"></span></p>
-      <p id="pressure"><span id="pressure-data"></span></p>
-      <input id="find-weather" type="text" />
-      <button type="submit" id="submit-button">Search</button>
+      <div class="detailed-info my-3">
+        <div class="row" style="border-bottom: 1px solid #ccc;">
+          <div class="col m-auto" style="border-right: 1px solid #ccc;">
+            <p class="m-0" id="feels-like">
+              Feels Like: <br /><span id="feels-like-data"></span>°C
+            </p>
+          </div>
+          <div class="col m-auto">
+            <p id="temp-min" class="m-0">
+              H <span id="temp-min-data"></span>°C
+            </p>
+            <p id="temp-max" class="m-0">
+              L <span id="temp-max-data"></span>°C
+            </p>
+          </div>
+        </div>
+        <div class="row" style="border-bottom: 1px solid #ccc;">
+          <div class="col m-auto" style="border-right: 1px solid #ccc;">
+            <p id="sunrise" class="m-0">
+              Sunrise: <br /><span id="sunrise-data"></span>
+            </p>
+          </div>
+          <div class="col m-auto">
+            <p id="sunset" class="m-0">
+              Sunset: <br /><span id="sunset-data"></span>
+            </p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col" style="border-right: 1px solid #ccc;">
+            <p id="humidity" class="m-0">
+              Humidity <br /><span id="humidity-data"></span> %
+            </p>
+          </div>
+          <div class="col">
+            <p id="pressure" class="m-0">
+              Pressure <br /><span id="pressure-data"> </span> hPa
+            </p>
+          </div>
+        </div>
+      </div>
+      <input class="form-control" id="find-weather" type="text" />
+      <button
+        class="btn btn-outline-success m-3"
+        type="submit"
+        id="submit-button"
+      >
+        Search
+      </button>
     </div>
 
     <script

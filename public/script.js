@@ -24,8 +24,12 @@ getLocation();
 submitButton.addEventListener("click", async () => {
   const weatherInput = document.getElementById("find-weather").value;
   const geoCoords = await getGeoLocation(weatherInput);
-  const weatherData = await getWeatherData(geoCoords);
-  populateWeatherData(weatherData);
+  if (!geoCoords) {
+    alert("Location you searched not found, please try again");
+  } else {
+    const weatherData = await getWeatherData(geoCoords);
+    populateWeatherData(weatherData);
+  }
 });
 
 async function getWeatherData(geoCoords) {
@@ -73,12 +77,16 @@ function populateWeatherData(data) {
   icon.src = `icons/${data.weather[0].icon}.png`;
   city.innerHTML = data.name;
   mainInfo.innerHTML = data.weather[0].main;
-  mainTemp.innerHTML = data.main.temp;
-  feelsLike.innerHTML = data.main.feels_like;
-  minTemp.innerHTML = data.main.temp_min;
-  maxTemp.innerHTML = data.main.temp_max;
-  sunrise.innerHTML = data.sys.sunrise;
-  sunset.innerHTML = data.sys.sunset;
+  mainTemp.innerHTML = Math.round(data.main.temp);
+  feelsLike.innerHTML = Math.round(data.main.feels_like);
+  minTemp.innerHTML = Math.round(data.main.temp_min);
+  maxTemp.innerHTML = Math.round(data.main.temp_max);
+  sunrise.innerHTML = new Date(data.sys.sunrise * 1000).toLocaleTimeString(
+    "it-IT"
+  );
+  sunset.innerHTML = new Date(data.sys.sunset * 1000).toLocaleTimeString(
+    "it-IT"
+  );
   humidity.innerHTML = data.main.humidity;
   pressure.innerHTML = data.main.pressure;
 }
